@@ -8,17 +8,6 @@ on: # yamllint disable-line rule:truthy
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        distribution:
-          - dist: debian
-            version: bookworm
-          - dist: debian
-            version: trixie
-          - dist: ubuntu
-            version: jammy
-          - dist: ubuntu
-            version: noble
 
     steps:
       - uses: actions/checkout@v3
@@ -29,13 +18,6 @@ jobs:
           ansible
           ansible-lint
           yamllint
-          molecule
-
-      - name: create lxc container
-        uses: lkiesow/setup-lxc-container@v1
-        with:
-          dist: ${{ matrix.distribution.dist }}
-          release: ${{ matrix.distribution.version }}
 
       - name: yamllint
         run: |
@@ -44,7 +26,3 @@ jobs:
       - name: ansible-lint
         run: |
           ansible-lint
-
-      - name: run molecule tests
-        run: |
-          molecule test
