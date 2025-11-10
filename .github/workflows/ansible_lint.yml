@@ -1,5 +1,5 @@
 ---
-name: ansible tests
+name: Linting
 
 on: # yamllint disable-line rule:truthy
   - push
