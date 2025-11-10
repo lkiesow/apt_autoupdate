@@ -1,7 +1,7 @@
 ---
 name: Deployment tests
 
-on: # yamllint disable-line rule:truthy
+on:  # yamllint disable-line rule:truthy
   - push
   - pull_request
 
@@ -37,6 +37,6 @@ jobs:
         working-directory: .test
         run: ansible-playbook -i hosts.yml test.yml
 
-      - name: test ssh
+      - name: test service is installed and active
         run: |
           ssh test systemctl is-active unattended-upgrades
