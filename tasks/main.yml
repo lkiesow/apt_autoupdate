@@ -1,0 +1,30 @@
+---
+
+- name: Assert we run on Debian or Ubuntu
+  ansible.builtin.assert:
+    that: >
+      (ansible_facts["distribution"] == "Debian")
+      or (ansible_facts["distribution"] == "Ubuntu")'
+
+- name: Install unattended upgrades
+  ansible.builtin.package:
+    name: unattended-upgrades
+
+- name: Apply unattended upgrades config
+  ansible.builtin.template:
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Enable unattended upgrades
+  ansible.builtin.copy:
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    owner: root
+    group: root
+    mode: '0644'
+    force: true
+    content: |
+        APT::Periodic::Update-Package-Lists "1";
+        APT::Periodic::Unattended-Upgrade "1";

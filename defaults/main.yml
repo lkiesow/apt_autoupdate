@@ -1,0 +1,28 @@
+---
+
+# Origin pattern used by Debian
+# This is only used on Debian. Not on Ubuntu!
+# For Ubuntu, see `apt_autoupdate_allowed_origins`` below.
+apt_autoupdate_origins_pattern:
+  - "origin=Debian,codename=${distro_codename},label=Debian"
+  - "origin=Debian,codename=${distro_codename},label=Debian-Security"
+  - "origin=Debian,codename=${distro_codename}-security,label=Debian-Security"
+
+# Origin pattern used by Ubuntu
+# This is only used on Ubuntu. Not on Debian!
+# For Debian, see `apt_autoupdate_origins_pattern` above.
+apt_autoupdate_allowed_origins:
+  - "${distro_id}:${distro_codename}"
+  - "${distro_id}:${distro_codename}-security"
+  - "${distro_id}ESMApps:${distro_codename}-apps-security"
+  - "${distro_id}ESM:${distro_codename}-infra-security"
+
+# List of package pattern excluded from updates.
+# For example, `["linux-"]` would match Linux kernel packages.
+apt_autoupdate_blacklisted_packages: []
+
+# If the system should automatically perform a reboot if necessary.
+apt_autoupdate_reboot: "true"
+
+# The time when then system should be rebootet.
+apt_autoupdate_reboot_time: "05:00"

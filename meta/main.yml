@@ -1,0 +1,15 @@
+---
+
+galaxy_info:
+  author: Lars Kiesow
+  role_name: apt_autoupdate
+  namespace: lkiesow
+  description: Enables automatic package update via apt
+  license: BSD-3-Clause
+  min_ansible_version: 2.9.0
+  galaxy_tags:
+    - apt
+    - autoupdate
+    - package
+    - system
+dependencies: []
