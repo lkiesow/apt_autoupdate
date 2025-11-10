@@ -4,6 +4,13 @@ Ansible: APT Autoupdate Role
 Ansible role to activate automated package updates via `apt`.
 This role is for Debian and Ubuntu only.
 
+Role Options
+------------
+
+While the defaults set by this role should be reasonable in most cases,
+you can control several aspects of this role via ansible variables.
+For a list of options and their description, take a look at [the defaults](defaults/main.yml).
+
 Example Playbook
 ----------------
 
